@@ -1,5 +1,9 @@
 package main.java.Hilos.EstadosDeUnHilo;
 
+import java.rmi.StubNotFoundException;
+
+import javax.sound.sampled.SourceDataLine;
+
 public class ClasePrincipal {
 
     public static void main(String[] args) {
@@ -8,16 +12,18 @@ public class ClasePrincipal {
 
         hilo1.start();
 
+        
+
         try {
-            hilo1.sleep(1000);
+            Hilo_Proceso.sleep(1000);
         } catch (Exception e) {
         }
 
         hilo2.start();
-        hilo2.stop();
+        //hilo2.stop();
         
         try {
-            hilo2.sleep(2000);
+            Hilo_Proceso.sleep(2000);
         } catch (Exception e) {
         }
 

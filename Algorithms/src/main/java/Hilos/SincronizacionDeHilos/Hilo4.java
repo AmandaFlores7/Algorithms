@@ -9,6 +9,19 @@ package main.java.Hilos.SincronizacionDeHilos;
  *
  * @author amand
  */
-public class Hilo4 {
+public class Hilo4 extends Thread{
+    
+    @Override
+    public void run(){
+        for (int i = 1; i <= 5; i++){
+            System.out.println("K");
+            
+            try {
+                Hilo4.sleep(1000);
+            } catch (Exception e) {
+            }
+            
+        }
+    }
     
 }
