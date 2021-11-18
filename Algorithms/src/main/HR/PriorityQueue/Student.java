@@ -14,10 +14,10 @@ class Student {
     private String name;
     private double cgpa;
 
-    public Student(int id, String name, double cgpa) {
+    public Student(String id, String name, String cgpa) {
         this.name = name;
-        this.cgpa = cgpa;
-        this.id = id;
+        this.cgpa = Double.parseDouble(cgpa);
+        this.id = Integer.parseInt(id);
     }
     
     
@@ -32,19 +32,4 @@ class Student {
     public double getCgpa() {
         return cgpa;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setCgpa(double cgpa) {
-        this.cgpa = cgpa;
-    }
-    
-    
-    
 }

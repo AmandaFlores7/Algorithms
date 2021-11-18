@@ -6,38 +6,47 @@
 package main.HR.PriorityQueue;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  *
  * @author amand
  */
 class Priorities {
-
+    
+    private final PriorityQueue<Student> studentQueue = new PriorityQueue<>(
+            Comparator.comparing(Student::getCgpa).reversed()
+                    .thenComparing(Student::getName)
+                    .thenComparing(Student::getId)
+    );
+    
     public List<Student> getStudents(List<String> events) {
         int n = events.size();
-        Student student;
         String str;
         String[] newStr;
-        List<Student> students = new ArrayList<>(n);
+        List<Student> studentList = new ArrayList<Student>();
         
         for (int i = 0; i < n; i++){
-            System.out.println(events.get(i).charAt(5));
             if (events.get(i).charAt(5) == ' '){
                 str = events.get(i);
-                System.out.println(str);
+                newStr = str.split(" ");
+                Student student = new Student(newStr[3], newStr[1], newStr[2]);
                 
-                
-                
-                newStr = str.split("\\s+");
-                
-                System.out.println(newStr);
+                studentQueue.add(student);
+
+            }
+            else if(events.get(i).charAt(5) == 'D'){
+                //System.out.println("asdas");
+                studentQueue.poll();
             }
         }
         
+        while (!studentQueue.isEmpty()){
+            studentList.add(studentQueue.poll());
+        }
         
-        
-        return students;
+        return studentList;
     }
-    
 }
